@@ -5,7 +5,7 @@ using UnityEngine;
 public class Muzzle : MonoBehaviour
 {
 
-    //public GemeObject bullet;
+    public GameObject bullet;
 
     void Start()
     {
@@ -14,9 +14,16 @@ public class Muzzle : MonoBehaviour
 
     void Update()
     {
-       // if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            //Shot();
+            Shot();
         }
+    }
+
+    void Shot() {
+        GameObject obj;
+        obj = GameObject.Instantiate (bullet);
+        obj.transform.position = transform.position;
+        obj.GetComponent<Rigidbody> ().AddForce (transform.forward * 1000);
     }
 }
